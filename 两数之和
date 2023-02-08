@@ -1,0 +1,18 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+       //使用双层for循环遍历解决问题
+       int len = nums.length;
+        //第一层for循环，用作于充当第一个加数
+        for(int i=0;i<len-1;i++){ //i只需要遍历到倒数第二个个位置
+            for(int j=i+1;j<len;j++){ //j需要遍历到最后一个数字，并且从[1]位置开始
+                //判断哪两个位置上的值相加等于target
+                if(nums[i]+nums[j]==target){
+                    return new int[]{i,j};
+                }
+            }
+
+        }
+        //
+        throw new IllegalArgumentException("No two sum solution");
+    }
+}
