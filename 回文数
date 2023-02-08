@@ -1,0 +1,19 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+       //如果这个数是负数就没有回文数
+       if(x<0){
+           return false;
+       }
+       
+        //将x转换为字符串，并保存起来
+        String oldstr = ""+x;
+        
+        //调用StringBuilder方法
+        //reverse():反转数组中元素顺序
+        //toString():将原来的数据转换为字符串类型后并返回
+        String newstr = new StringBuilder(oldstr).reverse().toString();
+        
+        //比较字符串反转前后是否相等
+        return oldstr.equals(newstr);
+    } 
+}
