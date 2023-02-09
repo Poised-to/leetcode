@@ -1,0 +1,22 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        
+        int left=0;
+        int right=1;
+
+        //一切的前提都要在right没有走到数组的最后一个元素
+        // if(right<nums.length){  //这里需要就行循环，而不是判断
+        while(right<nums.length){
+            //当left与right所在索引处的数据不相等时
+           
+            if(nums[left] != nums[right]){
+                nums[left+1]=nums[right];  //把left所在索引后一个数据的值改为right索引处所在的值
+                left++;  //left指针后移一位
+            }
+            //如果两个指针所在处的数据一样，那么right指针后移
+            right++;
+        }
+         return left+1;
+    //    System.out.print(left+1);
+    }
+   
