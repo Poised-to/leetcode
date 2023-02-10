@@ -1,0 +1,30 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        //先进行判断，如果strs为空,直接返回""
+        if(strs.length == 0){
+            return "";
+        }
+    
+        //让ans表示strs中的第一个单词
+        String ans = strs[0];
+
+        //外层遍历数组中的单词
+        for(int i=1;i<strs.length;i++){
+            //第二层遍历第一个单词ans,得到字母
+            
+            for(int j=0;j<ans.length() && j<strs[i].length();j++){
+                //判断停止条件
+                //当ans的j处位置的字幕 不等于 任意单词（i）j处的字母时停止循环
+                if(ans.charAt(j) != strs[i].charAt(j)){ 
+                    break;
+                }
+                   
+            }
+            ans = ans.substring(0, j);
+                if(ans.equals("")){
+                    return ans;
+                } 
+            }
+            return ans;
+        }
+    }
