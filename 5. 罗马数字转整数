@@ -1,0 +1,46 @@
+class Solution {
+    public int romanToInt(String s) {
+        //定义一个变量sum，用于返回最后的数值
+        int sum=0;
+        //通过getValue方法，获得s字符串0位置上的数字
+        int prenum = getValue(s.charAt(0));    //charAt():用于返回指定索引处的字符，索引的范围是0~length()-1
+        //从第二个位置遍历s字符串
+       for(int i=1; i<s.length();i++){
+           //把遍历出的每一个值，都赋给num
+           int num = getValue(s.charAt(i));
+           //进行判断prenum与num的值谁的大
+           if(num>prenum){
+               sum = sum-prenum;
+           }else{
+               sum = sum+prenum;
+           }
+           //把num的值赋给prenum
+           prenum=num;
+
+        }
+            //sum+=prenum
+            sum = prenum+sum;  
+            return sum;
+       }
+
+       private int getValue(char ch){
+           switch(ch){
+                case 'I': return 1;
+
+                case 'V': return 5;
+
+                case 'X': return 10;
+
+                case 'L': return 50;
+
+                case 'C': return 100;
+
+                case 'D': return 500;
+
+                case 'M': return 1000;
+
+                default: return 0;
+           }
+       }
+    
+}
