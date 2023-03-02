@@ -1,0 +1,30 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+
+class Solution {
+    public int maxDepth(TreeNode root) {
+        //先判断树是否为空，为空的话最大深度为0
+        if(root ==null){
+            return 0;
+        }
+        //使用前序遍历
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        //Math.max():获取两个数里面的较大值，得出结果后+1
+        return Math.max(left,right)+1;
+    }
+}
