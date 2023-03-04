@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        //使用List<List<Integer>>得到一个表
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        //第一层遍历行数
+        for(int i=0; i<numRows; i++){
+            //定义一个集合，用来存储每一层的数据
+            List<Integer> res = new ArrayList<>();
+            //第二层遍历每一行的字符
+             for(int j=0; j<=i; j++){
+            // for(int j=0; j<=numRows; j++){  //j<=numRows不可取，里层遍历需要依赖i,否则报错
+                if(j==0 || i==j){
+                    res.add(1);  //这里指的是两侧都是1
+                }else{
+                    //数学方法
+                    res.add(ret.get(i-1).get(j-1) + ret.get(i-1).get(j));
+                }
+            }
+            ret.add(res);
+        }
+        return ret;
+    }
+}
