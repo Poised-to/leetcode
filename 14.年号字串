@@ -1,0 +1,26 @@
+小明用字母 AA 对应数字 11，BB 对应 22，以此类推，用 ZZ 对应 2626。对于 2727 以上的数字，小明用两位或更长位的字符串来对应，例如 AAAA 对应 2727，ABAB 对应 2828，AZAZ 对应 5252，LQLQ 对应 329329。
+
+请问 20192019 对应的字符串是什么？
+
+
+import java.util.Scanner;
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        //在此输入您的代码...
+        int n=2019;
+        //需要字符串可变
+        StringBuilder str = new StringBuilder();
+        while(n>0){
+          //因为计算机的数字从0开始，所以先-1
+          n--;
+          str.append((char)(n%26+'A'));
+          n/=26;
+        }
+        System.out.println(str.reverse().toString());
+
+    }
+}
