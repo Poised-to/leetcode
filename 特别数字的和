@@ -1,0 +1,37 @@
+小明对数位中含有 2、0、1、9 的数字很感兴趣（不包括前导 0），在 1 到 40 中这样的数包括 1、2、9、10 至 32、39 和 40，共 28 个，他们的和是 574。
+
+请问，在 1 到 nn 中，所有这样的数的和是多少？
+
+import java.util.Scanner;
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        // int n = scan.nextLine();
+        //返回的数据类型为数值型，next()返回的时字符型，但二者判断结束条件相同(Space;enter)
+        int n = scan.nextInt();
+        long num=0;
+        for(int i=0;i<n;i++){
+          if(check(i)){
+            num += i;
+          }
+        }
+         System.out.println(num);
+    }
+
+    private static boolean check(int m){
+        while(m!=0){
+          //为了取到个位上数字
+          int a = m%10;
+          if(a==2 || a==0 || a==1 || a==9){
+            return true;
+          }
+          // m=m/10;
+          //为了取到十位，百位...上的数字，循环时得到
+          m/=10;  //这种写法更好
+        }
+        return false;
+    }
+}
