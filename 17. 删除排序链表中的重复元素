@@ -1,0 +1,30 @@
+给定一个已排序的链表的头 head ， 删除所有重复的元素，使每个元素只出现一次 。返回 已排序的链表 。
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        //将头节点记录下来
+        ListNode cur = head;
+        //进行判定
+        while(cur != null && cur.next != null){
+            if(cur.val == cur.next.val){ //如果这两个相等，证明元素一样，需要改变指针指向
+                cur.next = cur.next.next;
+            }else{
+                 //如果元素不相等，就把指针cur向后移动一位
+                 cur = cur.next;
+            }
+           
+        }
+        //输出这个头节点为head的链表
+        return head;
+    }
+}
