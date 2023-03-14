@@ -1,0 +1,43 @@
+给你一个链表的头节点 head ，判断链表中是否有环。
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        //尝试：采用快慢指针的方法解决
+        // ListNode slow = head;
+        // ListNode fast = head.next;
+        // while(slow.next != null && fast.next != null){
+        //     if(slow.val == fast.val){
+        //         return true;
+        //     }else{
+        //         slow=slow.next;
+        //         fast=fast.next.next;
+        //     }
+        // }
+        // return false;
+
+        //利用hashset的性质，来解决问题
+        Set seen = new HashSet<ListNode>();
+        //如果当前结点为空，直接可以确定没有环，返回false
+        while(head != null){
+            //如果没有添加成功，证明这个结点已经被添加了一遍，所以直接返回true,有环
+            if(!seen.add(head)){
+                return true;
+            }else{
+                //让指针后移，接着遍历
+                head = head.next;
+            }
+        }
+        return false;
+    }
+}
