@@ -1,0 +1,37 @@
+给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //定义一个存储链表的HashSet集合
+        Set<ListNode> list = new HashSet<>();
+        //动议一个临时链表，用来存储遍历来的数据
+        //把headA赋值给temp,赋值的是地址，所以temp.next能找到数据
+        ListNode temp = headA;
+        while(temp != null){
+            list.add(temp);
+            temp = temp.next;
+        }
+        //此时，让headB的值赋给temp
+        temp = headB;
+        while(temp != null){
+            //判断list中是否已经有了现在temp的值，如果有，那么这个结点就是从链表相交的地方
+            if(list.contains(temp)){
+                return temp;
+            }else{
+                temp = temp.next;
+            }
+        }
+        return null;
+    }
+}
