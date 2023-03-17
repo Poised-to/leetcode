@@ -1,0 +1,55 @@
+给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
+
+ /**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+import java.lang.StringBuilder;
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+    /*    //创建StringBuilder对象，用来存储遍历得到的数据
+        String<Integer> str = new StringBuilder();
+        ListNode temp = head;
+        while(temp != null){
+            str.append(temp.val);
+            temp = temp.next;
+        }
+        String strr =new StringBuilder(str).reverse().toString();
+        if(str == strr){
+            return true;
+        }else{
+            return false;
+        }
+        */
+
+        //定义一个ArrayList用于存储数据
+        ArrayList<Integer> arr = new ArrayList<>();
+        //定义一个链表用来遍历
+        ListNode temp = head;
+        while(temp != null){
+            arr.add(temp.val);
+            temp = temp.next;
+        }
+
+        //采用双指针解决问题
+        //一个方法第一个位置，一个放在最后一个位置
+        int pre = 0;
+        int tail = arr.size()-1;
+        while(pre < tail){
+            // if(!arr[pre] == arr[tail]){
+                if(!arr.get(pre).equals(arr.get(tail))){
+                return false;
+            }
+            pre++;
+            tail--;
+        }
+        return true;
+    }
+}
