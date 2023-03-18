@@ -1,0 +1,20 @@
+给定一个包含 [0, n] 中 n 个数的数组 nums ，找出 [0, n] 这个范围内没有出现在数组中的那个数。
+
+ class Solution {
+    public int missingNumber(int[] nums) {
+        int a = 0;
+        //排序之后有利于进行比较
+        Arrays.sort(nums);
+        //先得到n
+        int n = nums.length;
+        //这个遍历得不到这个位置，所以在方法最后返回了你
+        for(int i=0; i<n; i++){
+            if(nums[i] == a){
+                a++;
+            }else{
+                return i;
+            }
+        }
+        return n;
+    }
+}
