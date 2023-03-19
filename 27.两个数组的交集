@@ -1,0 +1,40 @@
+给定两个数组 nums1 和 nums2 ，返回 它们的交集 。输出结果中的每个元素一定是 唯一 的。我们可以 不考虑输出结果的顺序 。
+
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        //采用set集合存储元素，因为set集合无序，且元素不能重复
+        //省去了排序和去重的工作
+        Set<Integer> set1 = new HashSet<Integer>();
+        Set<Integer> set2 = new HashSet<Integer>();
+        //采用增强for循环，将数组中的元素添加到集合中
+        for (int num : nums1) {
+            set1.add(num);
+        }
+        for (int num : nums2) {
+            set2.add(num);
+        }
+
+        return getIntersection(set1, set2);
+    }
+
+    public int[] getIntersection(Set<Integer> set1, Set<Integer> set2) {
+        //这一步需要保证前一个数组要比后一个数组小，所以才会有包含关系
+        if (set1.size() > set2.size()) {
+            return getIntersection(set2, set1);
+        }
+        //定义一个临时set集合，用来存储元素
+        Set<Integer> tempSet = new HashSet<Integer>();
+        for (int num : set1) {
+            if (set2.contains(num)) {
+                tempSet.add(num);
+            }
+        }
+        int[] arr = new int[tempSet.size()];
+        int temp = 0;
+        for (int num : tempSet) {
+            arr[temp] = num;
+            temp++;
+        }
+        return arr;
+    }
+}
