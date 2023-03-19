@@ -1,0 +1,54 @@
+给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+请注意 ，必须在不复制数组的情况下原地对数组进行操作。
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+    /*    //尝试采用双指针的方式解决问题
+        //第一遍双指针将0挪到后面
+        int i = 0;
+        //定义一个临时变量，用于交换数据时使用
+        int temp = 0;
+        int min = 1000000000;
+        for(int j=0; j<nums.length-1; j--){
+            if(nums[i] == 0 & nums[j] != 0){
+                nums[i] = nums[j];
+                nums[j] = 0;
+                i++;
+            }else{
+                i++;
+            }
+        }
+        //第二遍双指针调整前方非零数据的顺序
+        for(int n=0; n!=0; n++){
+            for(int m=1; m!=0; m++){
+                if(nums[m]<min){
+                    min = nums[m];
+                }
+                if(min<nums[n]){
+                    temp = nums[n];
+                    nums[n] = min;
+                    min = temp;
+                }
+            }
+        }
+        */
+
+        //这一题没有写出来是因为对题目产生误解；以为是非零数据按照从小到大的顺序排列，没注意是按照'相对'顺序排列
+        //在对题目重新理解和看题解之下，再来独立解答
+
+        //采用双指针的方式解决问题
+        int j=0;
+        //第一次循环，将所有非零数据都挪到前面，相对位置不变。但是后面的数据不为零
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i] != 0){
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+        //经过上面的循环，j位置以前都为非0，并且相对位置正确
+        //接下来只需要将j位置以后的数据全部变为0就行
+        for(int n = j; n<nums.length; n++){
+            nums[n] = 0;
+        }
+    }
+}
