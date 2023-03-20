@@ -1,0 +1,55 @@
+给你一个二叉树的根节点 root ， 检查它是否轴对称。
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+    /*    //跟据题意可知这一题必然采用递归
+        if(root.left != root.right){
+            return false;
+        }
+        return  isSymmetric(root.right) == isSymmetric(root.right) 
+        || isSymmetric(root.left) == isSymmetric(root.left);
+        */
+
+        //
+        if(root == null){
+            return true;
+        }
+        //先把根结点的左右孩子传进去作为参数
+        return dfs(root.left,root.right);
+    }
+    //定义一个方法，用来递归遍历
+    //使用默认的访问级别public,可以省略
+    boolean dfs(TreeNode left,TreeNode right){
+        //没有左右结点
+        if(left==null && right==null){
+            return true;
+        }
+        //有一个结点为空
+        if(left==null || right==null){
+            return false;
+        }
+        //左右结点都有，树的结构相同，但是值不相同
+        if(left.val != right.val){
+            return false;
+        } 
+        //递归左的左，右的右
+        //递归左的右，右的左 
+        //因为是轴对称
+        return dfs(left.left,right.right) && dfs(left.right,right.left);
+    }
+}
