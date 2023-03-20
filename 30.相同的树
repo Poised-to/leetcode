@@ -1,0 +1,61 @@
+给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。
+
+如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        //这一题采用递归,不需要for循环因为递归有能力循环
+        if(p == null && q == null){
+            return true;
+        }
+        //走到这里证明两个有一个为空，因为全为空走不到这里，前面就被拦截了
+         if(p == null || q == null){
+            return false;
+        }
+        //如果前两步都能通过证明结构一样，这一步用来验证数值是否相等
+         if(p.val != q.val){
+             return false;
+        }
+        //这里是关键步骤，分别将p,q的左子节点，右子节点进行继续比较
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+
+
+
+    /*    //定义一个数组，用来存储得到的元素
+        List<Integer> arr1 = new ArrayList<Integer>();
+        List<Integer> arr2 = new ArrayList<Integer>();
+        List<Integer> arr3 = midSame(p,arr1);
+        List<Integer> arr4 = midSame(q,arr2);
+        String a = String.toString(arr3);
+        String b = String.toString(arr4);
+        return a==b;
+    }
+
+    //采用中序遍历，比较一下得到的数字是否相等
+    public List<Integer> midSame(TreeNode n, List<Integer> arr){
+        if(n == null){
+            return;
+        }
+        midSame(n.left.arr);
+        arr.add(n);
+        midSame(n.right.arr);
+        }
+        */
+    }
+}
