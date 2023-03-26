@@ -1,0 +1,78 @@
+问题描述
+小明决定从下周一开始努力刷题准备蓝桥杯竞赛。他计划周一至周五每天 做 aa 道题目, 周六和周日每天做 bb 道题目。请你帮小明计算, 按照计划他将在 第几天实现做题数大于等于 nn 题?
+
+输入格式
+输入一行包含三个整数 a, ba,b 和 nn.
+
+输出格式
+输出一个整数代表天数。
+
+import java.util.Scanner;
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        //在此输入您的代码...
+        //1.将键盘录入的每一行数据获取出来
+        long a = scan.nextLong();
+        long b = scan.nextLong();
+        long n = scan.nextLong();
+        //定义一个数组，将一周之中每天做题的多少记录其中
+        long[] weekArr = {a,a,a,a,a,b,b};
+        //定义一个数，记录一共做了多少题
+        long count = 0L;
+        //定义一个数，记录已经过去了多少周
+        int week = 0;
+        //定义一个boolean类型的变量，用来结束循环
+        boolean isT = true;
+        //当isT为false结束循环
+        while(isT){
+          for(int i=0; i<weekArr.length; i++){
+            count+=weekArr[i];
+              if(count>=n){
+                // 计算天数，i从零开始，所以加一
+                System.out.println((week*7)+(i+1));
+                //此时得出结果，结束循环
+                isT = false;
+                break;
+              }
+          }
+          //当for循环执行一圈，证明过了一个星期
+          week++;
+        }
+    }
+}
+
+//自己尝试，失败了~
+
+     /*   //将数据获取出来
+        String str = scan.nextLine();
+        String[] newstr = str.split(" ");
+        int a = Integer.parseInt(newstr[0]);
+        int b = Integer.parseInt(newstr[1]);
+        int c = Integer.parseInt(newstr[2]);
+        //定义一个变量，用来存储做题总数
+        int count = 0;
+        for(int i=0; i<7; i++){
+          if(n<=0){
+            System.out.println(count);
+          }
+          if(i<5){
+            n-=a;
+            count++;
+          }
+          if(i>5 || i<7){
+            n-=b;
+            count++;
+          }
+          if((n>0) && (i==6)){
+            i=0;
+          }
+
+        }
+        scan.close();
+    }
+}
+*/
