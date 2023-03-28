@@ -1,0 +1,24 @@
+题目描述
+本题为填空题，只需要算出结果后，在代码中使用输出语句将所填结果输出即可。
+12000001200000 有多少个约数（只计算正约数）。
+
+import java.util.Scanner;
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+public class Main {
+    public static void main(String[] args) {
+        //遍历，拿1200000除去1~1200000之间的每一个整数，没有余数的就可以使sum++
+        //定义一个数字用来记录一共有多少个公约数
+        int sum = 0;
+        //定义一个数字，用来接收余数
+        int num = 0;
+        for(int i=1; i<=1200000; i++){
+          num = 1200000%i;
+          if(num == 0){    //证明此时的i使1200000的约数，sum++
+            sum++;
+          }
+        }
+        System.out.println(sum);
+    }
+}
