@@ -1,0 +1,64 @@
+题目描述
+小明正在整理一批历史文献。这些历史文献中出现了很多日期。小明知道这些日期都在 1960 年 1 月 1 日至 2059 年 12 月 31 日。令小明头疼的是，这些日期采用的格式非常不统一，有采用年/月/日的，有采用月/日/年的，还有采用日/月/年的。
+
+更加麻烦的是，年份也都省略了前两位，使得文献上的一个日期，存在很多可能的日期与其对应。
+
+比如 02/03/04，可能是 2002 年 03 月 04 日、2004 年 02 月 03 日或 2004 年 03 月 02 日。
+
+给出一个文献上的日期，你能帮助小明判断有哪些可能的日期对其对应吗？
+
+输入描述
+一个日期，格式是 "AA/BB/CCAA/BB/CC" (0 \leq A, B, C \leq 90≤A,B,C≤9)。
+
+输出描述
+输出若干个不相同的日期，每个日期一行，格式是 "yyyy-MM-ddyyyy−MM−dd"。多个日期按从早到晚排列。
+
+import java.util.Scanner;
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+import java.text.SimpleDateFormat;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        //获取键盘录入的数据
+        String  str=scan.next();
+        //将字符串分开，用split()方法
+        String[]  date=str.split("/");
+        //获取刚刚分离的元素
+        String y=date[0],m=date[1],d=date[2],
+                yMd=(Integer.parseInt(y)<60?"20"+y:"19"+y)+"-"+m+"-"+d,
+                mDy=(Integer.parseInt(d)<60?"20"+d:"19"+d)+"-"+y+"-"+m,
+                dMy=(Integer.parseInt(d)<60?"20"+d:"19"+d)+"-"+m+"-"+y;
+        
+        TreeSet<String> set = new TreeSet<String>();
+        if(f(yMd)) set.add(yMd);
+        if(f(mDy)) set.add(mDy);
+        if(f(dMy)) set.add(dMy);
+        //增强for循环，遍历出已经得到的日期数据，并输出
+        for (Object object : set) {
+            System.out.println(object);
+        }
+    }
+
+    //定义一个方法，判断拿到的日期数据是否可以添加进集合
+    public static boolean  f(String date){
+      //创建一个日期对象
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        //调用该对象的setLenient(true/false)方法
+      //传进去false，让遇到不合理的日期时不进行计算直接截断
+        format.setLenient(false);
+        try {
+          //parse():将字符串类型的数据转换位日期类型的数据
+            format.parse(date);
+        }catch (Exception e){
+          //如果遇到问题，证明转换失败，返回false,不添加
+            return  false;
+        }
+        //转换成功，返回true
+        return  true;
+    }
+}
