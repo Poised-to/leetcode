@@ -1,0 +1,60 @@
+问题描述
+你有一架天平。现在你要设计一套砝码，使得利用这些砝码可以称出任意 小于等于 NN 的正整数重量。
+
+那么这套砝码最少需要包含多少个砝码？
+
+注意砝码可以放在天平两边。
+
+输入格式
+输入包含一个正整数 N。
+
+输出格式
+输出一个整数代表答案。
+
+比如输入7，输出3
+
+import java.util.Scanner;
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+/*        //在此输入您的代码...
+        int num = scan.nextInt();
+        for(int i=1; i<10000; i++){
+          if(num==getnum(i)){
+            System.out.println(i);
+          }
+        }
+        scan.close();
+    }
+    //新建一个方法，用来获取i对应的数字
+    public static int getnum(int i){
+      int x = 0;
+      for(int j=1; j<=i; j++){
+
+        if(j<=i){
+             x=x*3+i;
+          
+         
+        }
+      }
+      return x;
+      */
+
+      int n = scan.nextInt();
+      //算是一个临时变量
+      int sum = 0;
+      //这个思路是自己没有想到的，不给固定结束的值，而是让它一直运行
+      for(int i=1; i>0; i++){
+        sum = sum*3+1;
+        //定义一个if语句吗，如果没得到否定就继续判断
+        if(n<=sum){
+          System.out.println(i);
+          break;
+        }
+      }
+      scan.close();
+    }
+}
