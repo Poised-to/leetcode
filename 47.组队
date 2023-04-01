@@ -1,0 +1,21 @@
+题目描述
+本题为填空题，只需要算出结果后，在代码中使用输出语句将所填结果输出即可。
+
+作为篮球队教练，你需要从以下名单中选出 11 号位至 55 号位各一名球员，组成球队的首发阵容。
+
+每位球员担任 11 号位至 55 号位时的评分如下表所示。请你计算首发阵容 11 号位至 55 号位的评分之和最大可能是多少？
+
+
+//这一题主要是理解题意，20个球员争夺5个位置，每个球员占一个位置，所以横向不能相等
+import java.util.Scanner;
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        //在此输入您的代码...
+        System.out.print(98+99+98+97+98);
+        scan.close();
+    }
+}
