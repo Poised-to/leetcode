@@ -1,0 +1,25 @@
+问题描述
+
+2020 年 7 月 1 日是中国共产党成立 99 周年纪念日。
+中国共产党成立于 1921 年 7 月 23 日。
+请问从 1921 年 7 月 23 日中午 12 时到 2020 年 7 月 1 日中午 12 时一共包
+含多少分钟？
+
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+public class test1 {
+    public static void main(String[] args) throws ParseException {
+        //从1921.7.23--2020.7.1其中经过了多少个小时
+        //定义一个SimpleDateformat对象,因为Date对象得到的时间值看起来不方便，所以这个方法就是自定义时间格式
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //SimpleDateFormat.format():把时间转换为字符串
+        //SimpleDateFormat.parse():把字符串转换为时间
+        Date start = sdf.parse("1921-07-23");
+        Date end = sdf.parse("2020-07-01");
+        //现在得到的是毫秒值，所以需要进行运算
+        int a = (int) ((end.getTime() - start.getTime()) / (1000 * 60));
+        System.out.println(a);
+    }
+}
