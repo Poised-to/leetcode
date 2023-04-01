@@ -1,0 +1,50 @@
+问题描述
+
+输入一个字符串，请输出这个字符串包含多少个大写字母，多少个小写字
+母，多少个数字。
+
+输入格式
+
+输入一行包含一个字符串。
+
+输出格式
+
+输出三行，每行一个整数，分别表示大写字母、小写字母和数字的个数。
+
+import java.util.Scanner;
+
+public class FenLeiJiSuan {
+    public static void main(String[] args) throws NumberFormatException{
+        //输入一个字符串
+        Scanner scan = new Scanner(System.in);
+        //定义三个变量用来存储得到的值
+        int num = 0;   //0~9的ASCII码48~57
+        int aNum = 0;  //91~122
+        int Anum = 0;  //65~90
+        //获得输入的字符串
+        String s = scan.nextLine();
+        //将这个字符串用""拆分
+        String[] split = s.split("");
+        //把得到的每一个字符都转换为数字,用遍历的方式得到
+        for(int i=0; i<split.length; i++){
+            int sum = Integer.parseInt(split[i]);
+            //判断这个数字的大小，是否为大写字母，小写字母，或是数字
+            if(sum>=48 && sum<=57){
+               num++;
+           }
+            if(sum>=91 && sum<=122){
+                aNum++;
+            }
+            if(sum>=65 && sum<=90){
+                Anum++;
+            }
+        }
+        System.out.println(Anum);
+        System.out.println(aNum);
+        System.out.println(num);
+    }
+}
+
+
+
+-----------------------------------------------------------
