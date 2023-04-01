@@ -1,0 +1,69 @@
+题目描述
+小蓝有一个超大的仓库，可以摆放很多货物。
+
+现在，小蓝有 nn 箱货物要摆放在仓库，每箱货物都是规则的正方体。小蓝规定了长、宽、高三个互相垂直的方向，每箱货物的边都必须严格平行于长、宽、高。
+
+小蓝希望所有的货物最终摆成一个大的长方体。即在长、宽、高的方向上分别堆 LL、WW、HH 的货物,满足 n = L \times W \times Hn=L×W×H。
+
+给定 nn，请问有多少种堆放货物的方案满足要求。
+
+例如，当 n = 4n=4 时，有以下 66 种方案：1×1×4、1×2×2、1×4×1、2×1×2、2 × 2 × 1、4 × 1 × 11×1×4、1×2×2、1×4×1、2×1×2、2×2×1、4×1×1。
+
+请问，当 n = 2021041820210418n=2021041820210418 （注意有 1616 位数字）时，总共有多少种方案？
+
+提示：建议使用计算机编程解决问题。
+
+答案提交
+这是一道结果填空的题，你只需要算出结果后提交即可。本题的结果为一个整数，在提交答案时只填写这个整数，填写多余的内容将无法得分。
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        //这一题的意思就是求出三个数相乘如果等于n,就添加一个次数
+        // Long n = 2021041820210418L;
+        // int sum = 0;
+        // for(int i=0; i<n; i++){
+        //   for(int j=1; j<n; j++){
+        //     for(int k=2; k<n; k++){
+        //       if(i*j*k == n){
+        //         sum++;
+        //       }
+        //   }
+        //   }
+        // }
+        // System.out.println(sum);
+       
+       //上面时间复杂度太大，肯定超时
+
+       //把题目给的数定义出来
+       long lo = 2021041820210418L;
+       //定义一个数组用来接收下面的数字（约数）
+       ArrayList<Long> arr = new ArrayList<>();
+        for(long i=1; i<=Math.sqrt(lo); i++){
+          //如果余数为0，那就说明i是num的约数
+          if(lo%i==0){
+            arr.add(i);
+            //得到一个i以外的另一个约数
+            long n = lo/i;
+            //如果两个约数相等就不添加，重复的没有意义
+            if(n!=i){
+              arr.add(n);
+            }
+          }
+        }
+        int count=0;
+        //三层遍历arr因为这里存的是lo所有的约数
+        for(long i:arr){
+          for(long n:arr){
+            for(long k:arr){
+              if(i*n*k == lo){
+                count++;
+              }
+            }
+          }
+        }
+        System.out.println(count);
+    }
+}
