@@ -2,31 +2,65 @@
 
 求第 2019032420190324 项的最后 4 位数字。
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+public class Student {
+    public static void main(String[] args) {
+        //在此输入您的代码...
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(0,1);
+        arr.add(1,1);
+        arr.add(2,1);
+        for(int i=3; i<20190324; i++){
+            arr.add(i)=arr.indexOf(i-1)+arr.indexOf(i-2)+arr.indexOf(i-3);//报错
+            if(i==20190320){
+                System.out.println(arr.indexOf(20190320));
+            }
+            if(i==20190321){
+                System.out.println(arr.indexOf(20190321));
+            }
+            if(i==20190322){
+                System.out.println(arr.indexOf(20190322));
+            }
+            if(i==20190323){
+                System.out.println(arr.indexOf(20190323));
+            }
+        }
+
+    }
+}
+  
+--------------------------------------------------------------------------------
+
 import java.util.Scanner;
 // 1:无需package
 // 2: 类名必须Main, 不可修改
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
         //在此输入您的代码...
-      /*  //定义一个数组
-        int[] arr =new int[20190324];
-        arr[0] = 1;
-        arr[1] = 1;
-        arr[2] = 1;
-        for(int i=3; i<arr.length; i++){
-          arr[i] = arr[i-1] + arr[i-2] + arr[i-3];
-          if(i==20190323){
-
-            int a =arr[i];
-            a=a%10000;
-            System.out.println(a);
+        int[] arr = new int[20190324];
+        arr[0]=1;
+        arr[1]=1;
+        arr[2]=1;
+        for(int i=3; i<20190324; i++){
+          arr[i]=arr[i-1]%10000+arr[i-2]%10000+arr[i-3]%10000;
+          if(arr[i]>=10000){
+            arr[i] = arr[i]%10000;
           }
-           
+          
         }
-        */
-  
+        System.out.println(arr[20190323]); //856830691
+
+
+    }
+}
+
+--------------------------------------------------------------------------------
 
          int a = 1,b = 1,c = 1,d = 0;
         for(int i = 4;i<=20190324;i++){
