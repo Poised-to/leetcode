@@ -1,0 +1,33 @@
+题目描述
+本题为填空题，只需要算出结果后，在代码中使用输出语句将所填结果输出即可。
+
+一个字符串的非空子串是指字符串中长度至少为 11 的连续的一段字符组成的串。例如，字符串 aaabaaab 有非空子串 a, b, aa, ab, aaa, aab, aaaba,b,aa,ab,aaa,aab,aaab，一共 77 个。
+
+注意在计算时，只算本质不同的串的个数。
+
+请问，字符串 01001100010100010100110001010001 有多少个不同的非空子串？
+
+import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
+// 1:无需package
+// 2: 类名必须Main, 不可修改
+
+public class Main {
+    public static void main(String[] args) {
+        //得到输入的字符串
+        String line = "0100110001010001";
+        //定义一个HashSet集合,因为这里的元素不会重复，正好来做去重工作
+        Set<String> set = new HashSet<>();
+        //采用双层循环得到每一个line的子串
+        for(int i=0; i<line.length(); i++){
+            //j=i+1的原因是题目要求，只计算本质不同的子串的个数
+            for(int j=i+1;j<=line.length(); j++){
+                String temp = line.substring(i,j);
+                set.add(temp);
+            }
+        }
+        System.out.println(set.size());
+       
+    }
+}
