@@ -26,6 +26,7 @@ class Solution {
     //这个方法通过不停的递归，将把（指针）直接方法树的最下方
     private void inorder(TreeNode root, List<Integer> res){
         if(root == null){
+        //谁调用，返回谁。递归调用时返回到上一层
             return;
         }
         //递归调用inorder先往左子树遍历
