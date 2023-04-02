@@ -25,6 +25,7 @@ class Solution {
     //定义一个方法进行前序遍历
     public void pre(TreeNode root, List<Integer> res){
         //判断这个树是否为空
+        //复习一遍，现在觉得这里的返回应该是返回到上一层递归，而不是返回到调用方法的位置
         if(root == null){
             // return 0;  //不用返回0，直接返回,让方法调用者打印自己的数据(res)
             return;  
