@@ -13,6 +13,7 @@
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
         //这个结点的作用就是充当head结点的前一个结点，因为head结点可能为val，这样就可以通过 temp.next = temp.next.next;删除head
+        //ListNode(int x):如果参数位置的x的值为0，那么就代表链表为空，也就是定义了一个新链表
         ListNode preNode = new ListNode(0);
         preNode.next = head;
         //定义一个新链表，用来临时存储结点
