@@ -19,6 +19,8 @@ public class Solution {
         //把headA赋值给temp,赋值的是地址，所以temp.next能找到数据
         ListNode temp = headA;
         while(temp != null){
+            //突然理解了，这里添加的不是temp.val而是temp结点本身；
+            //所以可以用来判定它是不是相交的结点，因为添加值进list不符合泛型，并且用值来判定是否为相交结点不合理，有可能值相等而并不是同一个结点
             list.add(temp);
             temp = temp.next;
         }
