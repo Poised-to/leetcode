@@ -31,7 +31,7 @@ class Solution {
 
         //定义一个ArrayList用于存储数据
         ArrayList<Integer> arr = new ArrayList<>();
-        //定义一个链表用来遍历
+        //把链表中的元素全部存储到数组之中
         ListNode temp = head;
         while(temp != null){
             arr.add(temp.val);
@@ -43,6 +43,7 @@ class Solution {
         int pre = 0;
         int tail = arr.size()-1;
         while(pre < tail){
+            //定长数组int[]才能通过arr[]这种方式得到指定位置的元素，而ArrayList需要使用get方法
             // if(!arr[pre] == arr[tail]){
                 if(!arr.get(pre).equals(arr.get(tail))){
                 return false;
