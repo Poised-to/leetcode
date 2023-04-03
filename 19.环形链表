@@ -35,6 +35,7 @@ public class Solution {
                 return true;
             }else{
                 //让指针后移，接着遍历
+                //按照刚刚的理解，head.next在=右边的时候是让head移到指针指向的位置，而不是指针改变方向指向head
                 head = head.next;
             }
         }
