@@ -1,7 +1,7 @@
 题目描述
 小蓝要和朋友合作开发一个时间显示的网站。
 
-在服务器上，朋友已经获取了当前的时间，用一个整数表示，值为从 19701970 年 11 月 11 日 00:00:0000:00:00 到当前时刻经过的毫秒数。
+在服务器上，朋友已经获取了当前的时间，用一个整数表示，值为从 19701970 年 1 月 1 日 00:00:00 到当前时刻经过的毫秒数。
 
 现在，小蓝要在客户端显示出这个时间。小蓝不用显示出年月日，只需要显示出时分秒即可，毫秒也不用显示，直接舍去即可。
 
@@ -26,7 +26,9 @@ public class Main {
         //定义一个Date对象，并把lo传进去
         Date date = new Date(lo);
         //定义一个SimpleDateFormat对象，使用其中的方法
+        //SimpleDateFormat配合Date一起使用，就是为了自定义Date传来的日期格式
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        //format():将日期转换为字符串  parse():将字符串转换为日期
         System.out.println(sdf.format(date));
         scan.close();
     }
