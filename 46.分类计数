@@ -45,6 +45,44 @@ public class FenLeiJiSuan {
     }
 }
 
-
+思路是对的，但是对字符与数字之间的转换不熟练，不了解导致失败
 
 -----------------------------------------------------------
+
+import java.util.*;
+public class Main006_分类计数 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        //获得输入的字符
+        String str = in.nextLine();
+        //定义三个变量用来统计每一种的出现次数
+        int count1 = 0, count2 = 0, count3 = 0;
+        //遍历获得字符串中的每一个字符，并进行判断，是否在判定的范围之内
+        for(int i=0; i<str.length(); i++){
+            //把<=,>=两边的字符都强转为数字，这样就可以进行比较了
+            //a-z,A-Z,0-9,字符对应的数字在上面有
+            if((int)str.charAt(i)>=(int)('A') && (int)str.charAt(i)<=(int)('Z')){
+                count1++;
+            }
+            if((int)str.charAt(i)>=(int)('a') && (int)str.charAt(i)<=(int)('z')){
+                count2++;
+            }
+            if((int)str.charAt(i)>=(int)('0') && (int)str.charAt(i)<=(int)('9')){
+                count3++;
+            }
+        }
+        System.out.println(count1);
+        System.out.println(count2);
+        System.out.println(count3);
+    }
+ }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
