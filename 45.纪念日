@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 public class test1 {
     public static void main(String[] args) throws ParseException {
         //从1921.7.23--2020.7.1其中经过了多少个小时
-        //定义一个SimpleDateformat对象,因为Date对象得到的时间值看起来不方便，所以这个方法就是自定义时间格式
+        //Date定义时传入的参数是一个毫秒值，当不用毫秒值当参数时就可以用SimpleDateFormat来自定义传入参数的格式
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //SimpleDateFormat.format():把时间转换为字符串
         //SimpleDateFormat.parse():把字符串转换为时间
